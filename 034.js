@@ -11,7 +11,7 @@
 function removeSmallest(numbers) {
     let minValue = Math.min(...numbers)
     let indexMinValue = numbers.indexOf(minValue)
-    return numbers.filter((n, i) => i !== indexMinValue)
+    return numbers.filter((_n, i) => i !== indexMinValue)
 }
 
 let numbers = [20, 2,3,4,5]
