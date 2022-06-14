@@ -11,5 +11,10 @@ function sumTwoSmallestNumbers(numbers) {
     return secondSmallNumber + firstSmallNumber
 }
 
+const simplified = (numbers) => {
+    const sort = numbers.sort((a, b) => a - b)
+    return numbers[0] + numbers[1]
+}
+
 const arr = [15, 28, 4, 2, 43];
 console.log(simplified(arr))
