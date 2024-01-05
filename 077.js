@@ -1,19 +1,28 @@
-// Dizemos que um numero natural X esconde o Y quando, ao apagar alguns algarismos de X, o numero Y aparece. Por exemplo, o numero 12345 esconde o numero 235, uma vez que pode ser obtido ao apagar o 1 e 4, Por outro lado, ele não esconde o numero 154.
+// This time no story, no theory. The examples below show you how to write function accum:
 
-const rodrigo = (num, numOculto) => {
-  const arrNum = num.toString().split("");
-  const arrNumOculto = numOculto.toString().split("");
-  const arrResult = [];
+// Examples:
+// accum("abcd") -> "A-Bb-Ccc-Dddd"
+// accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+// accum("cwAt") -> "C-Ww-Aaa-Tttt"
+// The parameter of accum is a string which includes only letters from a..z and A..Z.
 
-  arrNum.map((elem) => {
-    if (arrNumOculto.includes(elem)) {
-      arrResult.push(elem);
+
+
+const accum = (str) => {
+  const arr = [];
+
+  str.split('').map((char, index) => {
+    for(let i = 0; i < index + 1; i++) {
+      arr.push(char.toLowerCase())
     }
-  });
-  return Number(arrResult.join("")) === numOculto;
-};
 
-console.log(rodrigo(45, 4));
+    arr.push('-')
+  })
 
-const formula = (altura + 1) * (largura + 1)
-return altura === 0 || largura === 0 ? 0 : formula
+  const result = arr.join('').substring(0, arr.length - 1).split('-')
+
+  return result.map(e => e.charAt(0).toUpperCase() + e.slice(1)).join('-')
+}
+
+
+console.log(accum('abcd'))
